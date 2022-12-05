@@ -1,54 +1,61 @@
-#créer classe trefle, classe pique, clasee coeur et classe carreau 1 a 13
-#créer un menu 
+def donnée_carte():
+    trefle = ["♣ 1", "♣ 2", "♣ 3", "♣ 4", "♣ 5", "♣ 6", "♣ 7", "♣ 8", "♣ 9", "♣ 10", "♣ 11", "♣ 12", "♣ 13"]
+    coeur = ["♥ 1", "♥ 2", "♥ 3", "♥ 4", "♥ 5", "♥ 6", "♥ 7", "♥ 8", "♥ 9", "♥ 10", "♥ 11", "♥ 12", "♥ 13"]
+    pique = ["♠ 1", "♠ 2", "♠ 3", "♠ 4", "♠ 5", "♠ 6", "♠ 7", "♠ 8", "♠ 9", "♠ 10", "♠ 11", "♠ 12", "♠ 13"]
+    carreau = ["♦ 1", "♦ 2", "♦ 3", "♦ 4", "♦ 5", "♦ 6", "♦ 7", "♦ 8", "♦ 9", "♦ 10", "♦ 11", "♦ 12", "♦ 13"]
+    carte = trefle + coeur + pique + carreau
+    return carte
 
-import time 
-def labo3():
-    trefle = "♣ 1", "♣ 2", "♣ 3", "♣ 4", "♣ 5", "♣ 6", "♣ 7", "♣ 8", "♣ 9", "♣ 10", "♣ 11", "♣ 12", "♣ 13"
-    coeur = "♥ 1", "♥ 2", "♥ 3", "♥ 4", "♥ 5", "♥ 6", "♥ 7", "♥ 8", "♥ 9", "♥ 10", "♥ 11", "♥ 12", "♥ 13"
-    pique = "♠ 1", "♠ 2", "♠ 3", "♠ 4", "♠ 5", "♠ 6", "♠ 7", "♠ 8", "♠ 9", "♠ 10", "♠ 11", "♠ 12", "♠ 13"
-    carreau = "♦ 1", "♦ 2", "♦ 3", "♦ 4", "♦ 5", "♦ 6", "♦ 7", "♦ 8", "♦ 9", "♦ 10", "♦ 11", "♦ 12", "♦ 13"
-    carte = trefle, coeur, pique, carreau
-#print('Trefle\nCoeur\nCarreau\nPique')
-menulabo3 = {
-    'Voici les choix disponible: '
-    "[1] Afficher l'état du jeu de carte"
-    "[2] Effectuer un brassage inter-coupé\n"
-    "[3] Effectuer un brassage par paquets\n"
-    "[4] Sauvegarder l'état final dans un fichier\n"
-}
-print(menulabo3)
+def Afficher_état(carte):
+    print(carte[0:13])
+    print(carte[13:26])
+    print(carte[26:39])
+    print(carte[39:52])
 
-choix_utilisateur = int(input('Ecriver votre option: '))
-
-if choix_utilisateur == 1:
-    print(carte)
-elif choix_utilisateur == 2:
-    length = len(carte)
-    middle_index = length//2
-    premiere_moitier = carte[:middle_index]
-    deuxieme_moitier = carte[middle_index:]
+def Brassage_inter_coupé(carte):
+    longeur = len(carte)
+    moitier = longeur//2
+    premiere_moitier = carte[:moitier]
+    deuxieme_moitier = carte[moitier:]
     carte = [item for sublist in zip(premiere_moitier, deuxieme_moitier) for item in sublist]
-    print(carte)
-    time.sleep(5)
-    #trouver comment revenir à if
-elif choix_utilisateur == 3:
-    import numpy as np
 
-listA = [11, 18, 19, 21, 29, 46]
+def Brassage_paquet(carte):
+    liste_carte = list()
+    groupe_carte = 4
+    for i in range (0, len(carte), groupe_carte):
+        liste_carte.append(carte[i:i+groupe_carte])
+        x = liste_carte
+    carte = (x[6], x[0], x[2], x[12], x[1], x[3], x[10], x[5], x[7], x[4], x[11], x[9], x[8])
 
-splits = np.array_split(listA, 13)
+def Sauvegarde(carte):
 
-#user.sort()
+    with open("cards.txt", "w", encoding="UTF-8") as f:
+        f.write({carte[0:13]}, {carte[13:26]}, {carte[26:39]}, {carte[39:52]})
 
-#users.sort(reverse=True, key=lambda e: e['date_of_birth']) 
+def menu_carte(carte):
 
-#for user in users:
-#    print(user)
+        menu_carte= {1: "Afficher l'état du jeu de carte",
+                    2: "Effectuer un brassage inter-coupé",
+                    3: "Effectuer un brassage par paquets",
+                    4: "Sauvegarder l'état final dans un fichier",}
+        print()
 
-for array in splits:
-    print(list(array))
-elif choix_utilisateur ==4:
-    #créer doc
-    #mettre bureau
-    # 13 cartes par ligne
-    
+        for num, option in menu_carte.items():
+            print(f"{num} - {option}")
+
+        choix = int(input("Voici les choix disponibles: "))
+        print()
+
+        match choix:
+            case 1: 
+                Afficher_état(carte) 
+            case 2:
+                Brassage_inter_coupé(carte)
+            case 3:
+                Brassage_paquet(carte)
+            case 4:
+                Sauvegarde(carte)
+            case _:
+                print("Choix invalide")
+
+menu_carte()
