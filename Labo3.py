@@ -18,6 +18,7 @@ def Brassage_inter_coupé(carte):
     premiere_moitier = carte[:moitier]
     deuxieme_moitier = carte[moitier:]
     carte = [item for sublist in zip(premiere_moitier, deuxieme_moitier) for item in sublist]
+    return carte
 
 def Brassage_paquet(carte):
     liste_carte = list()
@@ -26,6 +27,7 @@ def Brassage_paquet(carte):
         liste_carte.append(carte[i:i+groupe_carte])
         x = liste_carte
     carte = (x[6], x[0], x[2], x[12], x[1], x[3], x[10], x[5], x[7], x[4], x[11], x[9], x[8])
+    return carte
 
 def Sauvegarde(carte):
 
@@ -33,7 +35,7 @@ def Sauvegarde(carte):
         f.write({carte[0:13]}, {carte[13:26]}, {carte[26:39]}, {carte[39:52]})
 
 def menu_carte(carte):
-
+    carte 
         menu_carte= {1: "Afficher l'état du jeu de carte",
                     2: "Effectuer un brassage inter-coupé",
                     3: "Effectuer un brassage par paquets",
