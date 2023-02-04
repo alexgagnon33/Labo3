@@ -32,7 +32,7 @@ def Sauvegarde(carte):
         for i in range(0, 52, 13):
             f.write(" ".join(carte[i:i+13]) + "\n")
 
-def menu_carte():
+def menu_carte(carte):
     menu = {1: "Afficher l'état du jeu de carte",
             2: "Effectuer un brassage inter-coupé",
             3: "Effectuer un brassage par paquets",
