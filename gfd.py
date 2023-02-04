@@ -58,3 +58,5 @@ def menu_carte(carte):
 
     if choix == 1:
         Afficher_etat(carte)
+
+carte = donnee_carte()
