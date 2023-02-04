@@ -51,4 +51,4 @@ def menu_carte(carte):
             else:
                 print("Choix non valide, veuillez sélectionner un choix disponible.")
 
-menu_carte()
+menu_carte(carte)
