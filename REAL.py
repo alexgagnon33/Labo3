@@ -43,4 +43,4 @@ def menu_carte(carte):
     choix = int(input("Voici les choix disponibles: "))
     print(choix)
 
-menu_carte()
+menu_carte(donnee_carte())
