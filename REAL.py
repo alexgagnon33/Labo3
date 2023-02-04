@@ -39,13 +39,13 @@ def menu_carte(carte):
             print("3 - Effectuer un brassage par paquets")
             print("4 - Sauvegarder l'état final dans un fichier")
             choix_utilisateur = int(input("Voici les choix disponibles: "))
-            if choix_utilisateur == "1":
+            if choix_utilisateur == 1:
                 Afficher_etat(carte)
-            elif choix_utilisateur == "2":
+            elif choix_utilisateur == 2:
                 Brassage_inter_coupe(carte)
-            elif choix_utilisateur == "3":
+            elif choix_utilisateur == 3:
                 Brassage_paquet(carte)
-            elif choix_utilisateur == "4":
+            elif choix_utilisateur == 4:
                 Sauvegarde(carte)
                 break
             else:
