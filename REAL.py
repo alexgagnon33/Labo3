@@ -42,3 +42,5 @@ def menu_carte(carte):
         print(f"{num} - {option}")
     choix = int(input("Voici les choix disponibles: "))
     print(choix)
+
+menu_carte()
